@@ -21,6 +21,27 @@ const companySchema = new mongoose.Schema({
     },
     foundingDate: {
         type: Date
+    },
+    // Compliance and SmartTax upgraded fields
+    turnover: {
+        type: Number,
+        default: 0
+    },
+    msmeStatus: {
+        type: Boolean,
+        default: false
+    },
+    startupRecognition: {
+        type: Boolean,
+        default: false
+    },
+    employeeCount: {
+        type: Number,
+        default: 0
+    },
+    exportPercentage: {
+        type: Number,
+        default: 0
     }
 }, { timestamps: true });
 

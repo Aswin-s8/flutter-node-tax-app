@@ -17,7 +17,10 @@ router.get('/', auth, async (req, res) => {
 // Register a new company
 router.post('/', auth, async (req, res) => {
     try {
-        const { name, taxId, companyType, industry, foundingDate } = req.body;
+        const {
+            name, taxId, companyType, industry, foundingDate,
+            turnover, msmeStatus, startupRecognition, employeeCount, exportPercentage
+        } = req.body;
 
         const newCompany = new Company({
             name,
@@ -25,6 +28,11 @@ router.post('/', auth, async (req, res) => {
             companyType,
             industry,
             foundingDate,
+            turnover: turnover || 0,
+            msmeStatus: msmeStatus || false,
+            startupRecognition: startupRecognition || false,
+            employeeCount: employeeCount || 0,
+            exportPercentage: exportPercentage || 0,
             userId: req.user
         });
 

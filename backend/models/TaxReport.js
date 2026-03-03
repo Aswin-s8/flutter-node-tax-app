@@ -35,6 +35,46 @@ const taxReportSchema = new mongoose.Schema({
     rawQueryData: {
         // A place to store the raw answers to the tax questionnaire
         type: mongoose.Schema.Types.Mixed
+    },
+
+    // SmartTax upgraded fields
+    regimeSelected: {
+        type: String // e.g., 'OLD_REGIME', 'NEW_REGIME'
+    },
+    grossRevenue: {
+        type: Number,
+        default: 0
+    },
+    totalExpenses: {
+        type: Number,
+        default: 0
+    },
+    taxableIncome: {
+        type: Number,
+        default: 0
+    },
+    finalTaxLiability: {
+        type: Number,
+        default: 0
+    },
+    effectiveTaxRate: {
+        type: Number,
+        default: 0
+    },
+    slabBreakdown: [{
+        range: String,
+        rate: Number,
+        amountTaxed: Number,
+        tax: Number
+    }],
+    creditsApplied: {
+        type: mongoose.Schema.Types.Mixed // Details on applied credits
+    },
+    pdfUrl: {
+        type: String // URL or path to generated PDF report
+    },
+    reportHash: {
+        type: String // Hash to verify data integrity
     }
 }, { timestamps: true });
 
